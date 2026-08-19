@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+.font-script {
+  font-family: 'Alex Brush', 'Great Vibes', cursive;
+}
+
+.font-serif-display {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+/* Glassmorphism utilities */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+.glass-card-dark {
+  background: rgba(44, 38, 35, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(229, 195, 132, 0.25);
+}
+
+/* Realistic Heartbeat Animation */
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.4);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.4);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.1s infinite ease-in-out;
+  display: inline-block;
+}
+
+/* Keyframes for Beating Heart with Glow & Fade */
+@keyframes heartbeatFade {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.75;
+    box-shadow: 0 0 10px rgba(139, 38, 62, 0.3);
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+    box-shadow: 0 0 35px rgba(139, 38, 62, 0.9), 0 0 20px rgba(197, 160, 89, 0.8);
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.75;
+    box-shadow: 0 0 10px rgba(139, 38, 62, 0.3);
+  }
+}
+
+.animate-heartbeat-fade {
+  animation: heartbeatFade 1.8s infinite ease-in-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C5A059;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8B263E;
+}
+
+/* Keyframes & Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(197, 160, 89, 0.7);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
