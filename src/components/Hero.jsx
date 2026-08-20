@@ -29,13 +29,13 @@ export default function Hero({ onOpenCardModal }) {
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 text-center z-10">
-        {/* Ring Emblem Header */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF7F2] border border-[#C5A059]/40 shadow-sm mb-4 animate-pulse-glow">
-          <span className="text-xl">💍</span>
-          <span className="font-cinzel text-xs font-semibold uppercase tracking-[0.25em] text-[#A37E3B]">
-            Wedding Invitation
+        {/* Luxury Gold Ornament Header Badge */}
+        <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-gradient-to-r from-white via-[#FAF7F2] to-white border-2 border-[#C5A059]/60 shadow-[0_8px_25px_rgba(197,160,89,0.2)] mb-5 transform hover:scale-[1.02] transition-all">
+          <Sparkles className="w-4 h-4 text-[#C5A059] animate-spin-slow" />
+          <span className="font-cinzel text-xs font-extrabold uppercase tracking-[0.3em] text-[#8B263E]">
+            Holy Engagement & Matrimony
           </span>
-          <span className="text-xl">💍</span>
+          <Sparkles className="w-4 h-4 text-[#C5A059] animate-spin-slow" />
         </div>
 
         {/* Intro Tagline */}

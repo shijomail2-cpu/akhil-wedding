@@ -28,12 +28,9 @@ export default function Navbar({ onOpenCardModal }) {
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
-        {/* Brand Monogram */}
-        <a href="#" className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#8B263E] to-[#C5A059] flex items-center justify-center text-white font-cinzel font-bold text-sm shadow-md group-hover:scale-105 transition-transform">
-            A&J
-          </div>
-          <span className="font-script text-2xl md:text-3xl text-[#8B263E] font-bold">
+        {/* Brand Name (Single Line) */}
+        <a href="#" className="flex items-center group">
+          <span className="font-script text-2xl md:text-3xl text-[#8B263E] font-bold tracking-wide whitespace-nowrap">
             Akhil & Josna
           </span>
         </a>

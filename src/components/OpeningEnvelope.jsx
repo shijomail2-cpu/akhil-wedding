@@ -10,6 +10,9 @@ export default function OpeningEnvelope({ onOpen }) {
     if (isOpening) return;
     setIsOpening(true);
 
+    // Call onOpen immediately on click/touch to unlock audio on iOS Safari
+    onOpen();
+
     // Fire celebratory confetti
     confetti({
       particleCount: 160,
@@ -21,7 +24,6 @@ export default function OpeningEnvelope({ onOpen }) {
     // Sequence the letter opening animation before hiding overlay
     setTimeout(() => {
       setIsOpenState(true);
-      onOpen();
     }, 1200);
   };
 

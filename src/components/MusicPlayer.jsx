@@ -6,7 +6,7 @@ export default function MusicPlayer({ isPlaying, onTogglePlay }) {
   const playerRef = useRef(null);
   const [playerReady, setPlayerReady] = useState(false);
 
-  const videoId = "bqh0RRH8Kz8"; // YouTube short: "I found a love | Ed Sheeran - Perfect"
+  const videoId = "bqh0RRH8Kz8"; // Original song: "I found a love | Ed Sheeran - Perfect"
 
   useEffect(() => {
     // Load YouTube IFrame Player API dynamically
@@ -28,8 +28,8 @@ export default function MusicPlayer({ isPlaying, onTogglePlay }) {
     function initPlayer() {
       if (playerRef.current) return;
       playerRef.current = new window.YT.Player('yt-bg-player', {
-        height: '0',
-        width: '0',
+        height: '1',
+        width: '1',
         videoId: videoId,
         playerVars: {
           autoplay: 0,
@@ -38,6 +38,7 @@ export default function MusicPlayer({ isPlaying, onTogglePlay }) {
           controls: 0,
           showinfo: 0,
           modestbranding: 1,
+          playsinline: 1, // Crucial for iOS iPhone Safari playback
         },
         events: {
           onReady: (event) => {
@@ -60,9 +61,31 @@ export default function MusicPlayer({ isPlaying, onTogglePlay }) {
         playerRef.current.pauseVideo();
       }
     }
+  }, [isPlaying, playerReady]);
+
+  // Global touch listener to unlock YouTube audio playback on iOS iPhone
+  useEffect(() => {
+    const unlockiOSAudio = () => {
+      if (playerRef.current && playerRef.current.playVideo && isPlaying) {
+        try {
+          const state = playerRef.current.getPlayerState();
+          if (state !== 1) { // 1 = PLAYING
+            playerRef.current.playVideo();
+          }
+        } catch (e) {}
+      }
+    };
+
+    window.addEventListener('touchstart', unlockiOSAudio, { passive: true });
+    window.addEventListener('click', unlockiOSAudio, { passive: true });
+
+    return () => {
+      window.removeEventListener('touchstart', unlockiOSAudio);
+      window.removeEventListener('click', unlockiOSAudio);
+    };
   }, [isPlaying]);
 
-  // Handle mute toggle
+  // Handle Mute toggle
   const toggleMute = () => {
     const nextMute = !isMuted;
     setIsMuted(nextMute);
@@ -77,13 +100,13 @@ export default function MusicPlayer({ isPlaying, onTogglePlay }) {
 
   return (
     <>
-      {/* Hidden YouTube Iframe Container */}
-      <div className="hidden pointer-events-none">
+      {/* Off-screen YouTube IFrame Container for iOS Safari compatibility */}
+      <div className="fixed -top-[9999px] -left-[9999px] w-1 h-1 opacity-0 pointer-events-none">
         <div id="yt-bg-player"></div>
       </div>
 
       {/* Floating Music Widget (Bottom Right) */}
-      <div className="fixed bottom-5 right-5 z-40 flex items-center gap-3 bg-[#2C2623]/95 backdrop-blur-md text-white p-2.5 pr-5 rounded-full shadow-2xl border border-[#C5A059]/40 hover:scale-105 transition-all">
+      <div className="fixed bottom-5 right-5 z-40 flex items-center gap-3 bg-[#2C2623]/95 backdrop-blur-md text-white p-2.5 pr-5 rounded-full shadow-2xl border border-[#C5A059]/40 hover:scale-105 transition-all select-none">
         {/* Disc Icon / Equalizer */}
         <div
           onClick={onTogglePlay}
@@ -115,7 +138,7 @@ export default function MusicPlayer({ isPlaying, onTogglePlay }) {
         <div className="flex items-center gap-2 border-l border-white/20 pl-3">
           <button
             onClick={onTogglePlay}
-            className="p-1.5 rounded-full hover:bg-white/10 text-[#E5C384] transition-colors"
+            className="p-1.5 rounded-full hover:bg-white/10 text-[#E5C384] transition-colors cursor-pointer"
             title={isPlaying ? "Pause Music" : "Play Music"}
           >
             {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
@@ -123,7 +146,7 @@ export default function MusicPlayer({ isPlaying, onTogglePlay }) {
 
           <button
             onClick={toggleMute}
-            className="p-1.5 rounded-full hover:bg-white/10 text-white/80 transition-colors"
+            className="p-1.5 rounded-full hover:bg-white/10 text-white/80 transition-colors cursor-pointer"
             title={isMuted ? "Unmute" : "Mute"}
           >
             {isMuted ? <VolumeX className="w-4 h-4 text-red-400" /> : <Volume2 className="w-4 h-4" />}
