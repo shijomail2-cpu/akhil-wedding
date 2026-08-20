@@ -54,7 +54,7 @@ export default function CoupleSection() {
                   <Home className="w-3.5 h-3.5" /> Residence Address
                 </div>
                 <p className="font-serif italic text-sm text-[#2C2623]/90 leading-relaxed">
-                  Kurmbemadam House<br />
+                  Kurumbemadam House<br />
                   Kaniyampetta post, Cheekkalloor<br />
                   Wayanad, Kerala
                 </p>
