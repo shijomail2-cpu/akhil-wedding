@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Download, ZoomIn, Sparkles, Heart } from 'lucide-react';
+import { X, Download, ZoomIn, Sparkles, Heart, Phone } from 'lucide-react';
 
 export default function InvitationCardsModal({ isOpen, onClose }) {
   const [activeCard, setActiveCard] = useState('engagement'); // 'engagement' first, then 'wedding'
@@ -13,12 +13,18 @@ export default function InvitationCardsModal({ isOpen, onClose }) {
       date: 'Saturday, 5th September 2026',
       image: '/images/engagement-invitation-card.jpg',
       filename: 'Akhil_Josna_Engagement_Invitation_Card.jpg',
+      bestWishes: 'IZZA MARIYA & FAMILY',
+      contactName: 'Nithin Joshy',
+      contactPhone: '+91 70511 86617',
     },
     wedding: {
       title: 'Official Wedding Invitation Card',
       date: 'Saturday, 12th September 2026',
       image: '/images/wedding-invitation-card.jpg',
       filename: 'Akhil_Josna_Wedding_Invitation_Card.jpg',
+      bestWishes: 'ANJU & SRAVAN, SWARA SRAVAN, ANNAMA',
+      contactName: null,
+      contactPhone: null,
     },
   };
 
@@ -58,27 +64,29 @@ export default function InvitationCardsModal({ isOpen, onClose }) {
         {/* Scrollable Body Content */}
         <div className="p-4 md:p-6 overflow-y-auto space-y-6">
           {/* Tab Switcher (Engagement First, Wedding Second) */}
-          <div className="flex flex-col sm:flex-row justify-center gap-2 w-full">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 w-full max-w-md mx-auto">
             <button
               onClick={() => setActiveCard('engagement')}
-              className={`w-full sm:w-auto py-2.5 px-6 rounded-full font-cinzel text-xs uppercase tracking-wider transition-all font-semibold ${
+              className={`w-full sm:w-auto py-3 px-6 rounded-full font-cinzel text-xs uppercase tracking-wider transition-all font-bold cursor-pointer flex items-center justify-center gap-2 border-2 ${
                 activeCard === 'engagement'
-                  ? 'bg-[#593275] text-white shadow-md'
-                  : 'bg-white text-[#2C2623] border border-[#C5A059]/40 hover:bg-[#FAF7F2]'
+                  ? 'bg-[#593275] text-white border-[#593275] shadow-lg scale-[1.02]'
+                  : 'bg-white text-[#593275] border-[#593275]/50 hover:bg-[#593275] hover:text-white'
               }`}
             >
-              ✨ Engagement Card (5 Sept)
+              <span>✨ Show Engagement Card</span>
+              {activeCard === 'engagement' && <span className="w-2 h-2 rounded-full bg-[#E5C384] animate-ping" />}
             </button>
 
             <button
               onClick={() => setActiveCard('wedding')}
-              className={`w-full sm:w-auto py-2.5 px-6 rounded-full font-cinzel text-xs uppercase tracking-wider transition-all font-semibold ${
+              className={`w-full sm:w-auto py-3 px-6 rounded-full font-cinzel text-xs uppercase tracking-wider transition-all font-bold cursor-pointer flex items-center justify-center gap-2 border-2 ${
                 activeCard === 'wedding'
-                  ? 'bg-[#8B263E] text-white shadow-md'
-                  : 'bg-white text-[#2C2623] border border-[#C5A059]/40 hover:bg-[#FAF7F2]'
+                  ? 'bg-[#8B263E] text-white border-[#8B263E] shadow-lg scale-[1.02]'
+                  : 'bg-white text-[#8B263E] border-[#8B263E]/50 hover:bg-[#8B263E] hover:text-white'
               }`}
             >
-              💍 Wedding Card (12 Sept)
+              <span>💍 Show Wedding Card</span>
+              {activeCard === 'wedding' && <span className="w-2 h-2 rounded-full bg-[#E5C384] animate-ping" />}
             </button>
           </div>
 
@@ -108,9 +116,18 @@ export default function InvitationCardsModal({ isOpen, onClose }) {
               <h4 className="font-serif font-bold text-base text-[#2C2623]">
                 {current.title}
               </h4>
-              <p className="font-cinzel text-xs text-[#7E5F28]">
+              <p className="font-cinzel text-xs text-[#7E5F28] mb-1">
                 {current.date}
               </p>
+              <div className="text-xs font-serif text-[#8B263E] font-semibold">
+                ✨ Best Wishes: <span className="font-bold">{current.bestWishes}</span>
+              </div>
+              {current.contactPhone && (
+                <div className="mt-1 flex items-center gap-1.5 text-xs font-sans text-[#593275] font-bold">
+                  <Phone className="w-3.5 h-3.5" />
+                  <span>Contact: {current.contactName} ({current.contactPhone})</span>
+                </div>
+              )}
             </div>
 
             <a

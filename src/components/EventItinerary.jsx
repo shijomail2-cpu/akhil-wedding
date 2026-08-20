@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Clock, MapPin, Navigation, Church, PartyPopper, Heart } from 'lucide-react';
+import { Calendar, Clock, MapPin, Navigation, Church, PartyPopper, Heart, Phone } from 'lucide-react';
 
 export default function EventItinerary() {
   const events = [
@@ -13,6 +13,8 @@ export default function EventItinerary() {
       time: 'Betrothal Ceremony',
       venue: "St. Sebastian's Church, Thonichal, Wayanad",
       receptionVenue: 'Casa Wyna, Thonichal, Wayanad',
+      contactPerson: 'Nithin Joshy',
+      contactPhone: '+91 70511 86617',
       mapUrl: 'https://maps.google.com/?q=St.+Sebastian%27s+Church+Thonichal+Wayanad',
     },
     {
@@ -108,6 +110,28 @@ export default function EventItinerary() {
                       <p className="font-serif font-semibold text-sm text-[#2C2623]">
                         {evt.receptionVenue}
                       </p>
+                    </div>
+                  )}
+
+                  {evt.contactPhone && (
+                    <div className="mt-3 pt-3 border-t border-purple-100 bg-[#593275]/5 p-3 rounded-xl">
+                      <div className="flex flex-col gap-1.5">
+                        <span className="font-cinzel text-[10px] uppercase font-bold text-[#593275]">
+                          Contact Person
+                        </span>
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-serif font-bold text-sm text-[#2C2623]">
+                            {evt.contactPerson}
+                          </span>
+                          <a
+                            href={`tel:${evt.contactPhone.replace(/\s+/g, '')}`}
+                            className="py-1 px-2.5 rounded-lg bg-[#593275] text-white font-sans text-xs font-semibold flex items-center gap-1.5 hover:bg-[#7E529B] transition-colors shadow-sm"
+                          >
+                            <Phone className="w-3 h-3 text-[#E5C384]" />
+                            <span>{evt.contactPhone}</span>
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>

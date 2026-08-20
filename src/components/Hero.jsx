@@ -56,9 +56,9 @@ export default function Hero({ onOpenCardModal }) {
         {/* Hero Couple Portrait Image (Matching reference site) */}
         <div className="relative max-w-md mx-auto my-6 rounded-3xl overflow-hidden shadow-2xl border-4 border-[#C5A059]/50 group transform hover:scale-[1.01] transition-transform duration-500">
           <img
-            src="/images/sketch-portrait-2.jpg"
+            src="/images/sketch-portrait-1.jpg"
             alt="Akhil & Josna Couple Portrait"
-            className="w-full h-80 md:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-700"
+            className="w-full h-80 md:h-[420px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#2C2623]/90 via-transparent to-transparent flex flex-col justify-end p-6 text-white text-center">
             <span className="font-cinzel text-xs uppercase tracking-[0.25em] text-[#E5C384] font-semibold">

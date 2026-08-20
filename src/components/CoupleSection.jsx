@@ -23,10 +23,10 @@ export default function CoupleSection() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#C5A059]/20 to-transparent rounded-bl-full pointer-events-none"></div>
 
             <div>
-              {/* Photo Frame with Real Sketch Artwork */}
-              <div className="relative w-52 h-52 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg border-2 border-[#C5A059] group-hover:scale-105 transition-transform duration-500">
+              {/* Photo Frame with Real Cartoon Artwork */}
+              <div className="relative w-56 h-56 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg border-2 border-[#C5A059] group-hover:scale-105 transition-transform duration-500">
                 <img
-                  src="/images/sketch-portrait-1.jpg"
+                  src="/images/cartoon-outdoor.jpg"
                   alt="Groom Akhil K Eliyas"
                   className="w-full h-full object-cover object-top"
                 />
@@ -55,7 +55,7 @@ export default function CoupleSection() {
                 </div>
                 <p className="font-serif italic text-sm text-[#2C2623]/90 leading-relaxed">
                   Kurmbemadam House<br />
-                  Kaniyampetta post, Cheekkallor<br />
+                  Kaniyampetta post, Cheekkalloor<br />
                   Wayanad, Kerala
                 </p>
               </div>
@@ -67,10 +67,10 @@ export default function CoupleSection() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#8B263E]/20 to-transparent rounded-bl-full pointer-events-none"></div>
 
             <div>
-              {/* Photo Frame with Real Sketch Artwork */}
-              <div className="relative w-52 h-52 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg border-2 border-[#8B263E] group-hover:scale-105 transition-transform duration-500">
+              {/* Photo Frame with Real Cartoon Artwork */}
+              <div className="relative w-56 h-56 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg border-2 border-[#8B263E] group-hover:scale-105 transition-transform duration-500">
                 <img
-                  src="/images/sketch-portrait-2.jpg"
+                  src="/images/cartoon-car-selfie.jpg"
                   alt="Bride Josna Joshy"
                   className="w-full h-full object-cover object-top"
                 />
@@ -108,13 +108,34 @@ export default function CoupleSection() {
         </div>
 
         {/* Best Wishes Banner */}
-        <div className="mt-12 max-w-2xl mx-auto p-6 rounded-2xl bg-gradient-to-r from-[#FAF7F2] via-[#F4E7CE] to-[#FAF7F2] border border-[#C5A059]/40 text-center shadow-md">
-          <span className="font-cinzel text-xs uppercase tracking-[0.25em] text-[#7E5F28] font-semibold flex items-center justify-center gap-2 mb-2">
+        <div className="mt-12 max-w-3xl mx-auto p-6 md:p-8 rounded-3xl bg-gradient-to-r from-[#FAF7F2] via-[#F4E7CE]/60 to-[#FAF7F2] border-2 border-[#C5A059]/40 text-center shadow-lg relative overflow-hidden">
+          <span className="font-cinzel text-xs uppercase tracking-[0.25em] text-[#7E5F28] font-bold flex items-center justify-center gap-2 mb-4">
             <Gift className="w-4 h-4 text-[#8B263E]" /> With Best Wishes <Gift className="w-4 h-4 text-[#8B263E]" />
           </span>
-          <p className="font-serif text-xl font-bold text-[#8B263E]">
-            Izza Mariya & Family
-          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 divide-y md:divide-y-0 md:divide-x divide-[#C5A059]/30">
+            {/* Wedding Best Wishes */}
+            <div className="p-3">
+              <span className="font-cinzel text-[11px] uppercase tracking-wider text-[#8B263E] font-bold block mb-2">
+                💍 Wedding Ceremony
+              </span>
+              <div className="space-y-1 font-serif text-base font-bold text-[#8B263E]">
+                <p>Anju & Sravan</p>
+                <p>Swara Sravan</p>
+                <p>Annama</p>
+              </div>
+            </div>
+
+            {/* Engagement Best Wishes */}
+            <div className="p-3 pt-4 md:pt-3">
+              <span className="font-cinzel text-[11px] uppercase tracking-wider text-[#593275] font-bold block mb-2">
+                ✨ Engagement Ceremony
+              </span>
+              <div className="font-serif text-base font-bold text-[#593275] mt-3">
+                <p>Izza Mariya & Family</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -3,11 +3,12 @@ import confetti from 'canvas-confetti';
 import { Heart, Sparkles, Volume2 } from 'lucide-react';
 
 export default function OpeningEnvelope({ onOpen }) {
+  const [isOpening, setIsOpening] = useState(false);
   const [isOpenState, setIsOpenState] = useState(false);
-  const [isOpeningFlap, setIsOpeningFlap] = useState(false);
 
   const handleOpen = () => {
-    setIsOpeningFlap(true);
+    if (isOpening) return;
+    setIsOpening(true);
 
     // Fire celebratory confetti
     confetti({
@@ -17,15 +18,16 @@ export default function OpeningEnvelope({ onOpen }) {
       colors: ['#C5A059', '#8B263E', '#FAF7F2', '#D7BB7B', '#F394A5']
     });
 
+    // Sequence the letter opening animation before hiding overlay
     setTimeout(() => {
       setIsOpenState(true);
       onOpen();
-    }, 900);
+    }, 1200);
   };
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-[#120D0C]/95 backdrop-blur-xl transition-all duration-700 p-4 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-[#120D0C]/95 backdrop-blur-xl transition-all duration-1000 p-4 ${
         isOpenState ? 'opacity-0 pointer-events-none scale-105' : 'opacity-100 scale-100'
       }`}
     >
@@ -36,35 +38,46 @@ export default function OpeningEnvelope({ onOpen }) {
       </div>
 
       {/* Main Compact Envelope Cover Container */}
-      <div className="relative max-w-sm md:max-w-md w-full my-auto perspective-1000 flex flex-col items-center">
+      <div className="relative max-w-sm md:max-w-md w-full my-auto flex flex-col items-center">
         
-        {/* Envelope Paper Card Structure (Reduced Height) */}
+        {/* Envelope Paper Card Structure (No Vertical Ribbon) */}
         <div 
           onClick={handleOpen}
-          className="relative w-full bg-[#FDFBF7] rounded-3xl shadow-[0_30px_70px_rgba(0,0,0,0.7)] border-2 border-[#D7BB7B]/60 p-5 md:p-6 text-center overflow-hidden cursor-pointer transform hover:scale-[1.02] transition-all duration-300 group select-none"
+          className="relative w-full bg-[#FDFBF7] rounded-3xl shadow-[0_30px_70px_rgba(0,0,0,0.75)] border-2 border-[#D7BB7B]/60 p-6 text-center overflow-hidden cursor-pointer transform hover:scale-[1.02] transition-all duration-500 group select-none"
         >
           {/* Subtle Embossed Watermark Patterns */}
-          <div className="absolute inset-0 opacity-[0.06] pointer-events-none bg-[radial-gradient(#8B263E_1px,transparent_1px)] [background-size:16px_16px]"></div>
+          <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[radial-gradient(#8B263E_1px,transparent_1px)] [background-size:16px_16px]"></div>
           
-          <div className="absolute top-3 left-3 opacity-15 text-xl text-[#8B263E]">🤍</div>
-          <div className="absolute top-3 right-3 opacity-15 text-xl text-[#8B263E]">🤍</div>
-          <div className="absolute bottom-3 left-3 opacity-15 text-xl text-[#8B263E]">🤍</div>
-          <div className="absolute bottom-3 right-3 opacity-15 text-xl text-[#8B263E]">🤍</div>
+          <div className="absolute top-3 left-3 opacity-20 text-xl text-[#8B263E]">🤍</div>
+          <div className="absolute top-3 right-3 opacity-20 text-xl text-[#8B263E]">🤍</div>
+          <div className="absolute bottom-3 left-3 opacity-20 text-xl text-[#8B263E]">🤍</div>
+          <div className="absolute bottom-3 right-3 opacity-20 text-xl text-[#8B263E]">🤍</div>
 
-          {/* Envelope Top Triangular Flap Overlay */}
+          {/* Envelope Top Triangular Flap (Rotates Upwards on Open) */}
           <div 
-            className={`absolute top-0 inset-x-0 h-24 bg-[#F4E7CE]/50 border-b border-[#C5A059]/40 origin-top transition-transform duration-700 z-10 clip-path-flap ${
-              isOpeningFlap ? '-rotate-x-180 opacity-40' : ''
+            className={`absolute top-0 inset-x-0 h-28 bg-[#F4E7CE]/90 border-b border-[#C5A059]/40 z-30 transition-all duration-700 ease-in-out origin-top shadow-sm ${
+              isOpening ? '-translate-y-24 opacity-0 scale-95' : 'translate-y-0 opacity-100'
             }`}
             style={{ clipPath: 'polygon(0 0, 100% 0, 50% 100%)' }}
           ></div>
 
-          {/* Twine String Vertical Ribbon Line */}
-          <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-2.5 bg-gradient-to-b from-[#C5A059]/30 via-[#A37E3B]/40 to-[#C5A059]/30 border-x border-[#C5A059]/40 z-10 pointer-events-none"></div>
+          {/* Royal Heart Wax Seal (Breaks and fades out on click) */}
+          <div 
+            className={`absolute top-16 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ${
+              isOpening ? 'scale-150 opacity-0' : 'scale-100 opacity-100'
+            }`}
+          >
+            <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#8B263E] to-[#A11F3C] border-2 border-[#E5C384] shadow-md flex items-center justify-center text-white">
+              <Heart className="w-4 h-4 fill-white animate-pulse" />
+            </div>
+          </div>
 
-          {/* Envelope Header Content */}
-          <div className="relative z-20 pt-2 pb-1">
-            
+          {/* Sliding Letter Card Inside (Slides up gracefully out of envelope) */}
+          <div 
+            className={`relative z-20 pt-3 pb-2 transition-all duration-800 ease-out ${
+              isOpening ? '-translate-y-5 scale-105' : 'translate-y-0 scale-100'
+            }`}
+          >
             {/* Subtitle */}
             <p className="font-cinzel text-[11px] uppercase tracking-[0.35em] text-[#9A7B38] font-bold mb-1">
               Wedding Invitation Cover
@@ -76,9 +89,9 @@ export default function OpeningEnvelope({ onOpen }) {
             </h1>
 
             {/* Click To Open Indicator with Beating Heart */}
-            <div className="my-3 flex items-center justify-center gap-2 font-cinzel text-[11px] text-[#8B263E] font-bold tracking-widest uppercase">
+            <div className="my-3 flex items-center justify-center gap-2 font-cinzel text-[11px] text-[#8B263E] font-bold tracking-widest uppercase bg-[#FAF7F2] py-1.5 px-4 rounded-full border border-[#C5A059]/30 max-w-[210px] mx-auto shadow-sm">
               <Sparkles className="w-3.5 h-3.5 text-[#C5A059] animate-spin-slow" />
-              <span>Click To Open</span>
+              <span>{isOpening ? 'Opening Letter...' : 'Click To Open'}</span>
               <span className="animate-heartbeat inline-flex items-center justify-center">
                 <Heart className="w-4 h-4 text-[#8B263E] fill-[#8B263E] drop-shadow-[0_0_8px_rgba(139,38,62,0.6)]" />
               </span>
@@ -92,9 +105,7 @@ export default function OpeningEnvelope({ onOpen }) {
                 "Together with our families, we cordially invite you to celebrate our union."
               </p>
             </div>
-
           </div>
-
         </div>
 
         {/* Audio Turn Up Volume Subtext Below Envelope */}

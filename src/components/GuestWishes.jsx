@@ -6,21 +6,21 @@ export default function GuestWishes() {
   const defaultWishes = [
     {
       id: 1,
+      name: 'Anju & Sravan, Swara, Annama',
+      message: 'Heartiest congratulations & best wishes to Akhil & Josna! May your union be filled with boundless joy, love, and heavenly blessings.',
+      date: 'Aug 20, 2026',
+    },
+    {
+      id: 2,
       name: 'Izza Mariya & Family',
       message: 'Wishing Akhil & Josna a lifetime of joy, laughter, and unconditional love! May God abundantly bless your marriage.',
       date: 'Aug 20, 2026',
     },
     {
-      id: 2,
+      id: 3,
       name: 'Eldho & Family',
       message: 'Congratulations Akhil brother & Josna! So happy for both of you. Can’t wait to celebrate on 12th September at Kaniyambetta!',
       date: 'Aug 19, 2026',
-    },
-    {
-      id: 3,
-      name: 'Anjali & Friends',
-      message: 'Warmest wishes to the beautiful couple! May your love story continue to blossom with every passing year.',
-      date: 'Aug 18, 2026',
     },
   ];
 

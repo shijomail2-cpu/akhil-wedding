@@ -8,27 +8,33 @@ export default function PhotoGallery() {
   const photos = [
     {
       id: 1,
-      title: 'Official Engagement Card Design',
+      title: 'Oil Painting Couple Portrait',
+      subtitle: 'Akhil & Josna — Classic Portrait',
+      src: '/images/oil-painting-portrait.jpg',
+    },
+    {
+      id: 2,
+      title: 'Outdoor Couple Cartoon Artwork',
+      subtitle: 'Together In Love',
+      src: '/images/cartoon-outdoor.jpg',
+    },
+    {
+      id: 3,
+      title: 'Car Selfie Cartoon Illustration',
+      subtitle: 'Cherished Moments',
+      src: '/images/cartoon-car-selfie.jpg',
+    },
+    {
+      id: 4,
+      title: 'Official Engagement Card',
       subtitle: 'Saturday, 5th September 2026',
       src: '/images/engagement-invitation-card.jpg',
     },
     {
-      id: 2,
-      title: 'Official Wedding Card Design',
+      id: 5,
+      title: 'Official Wedding Card',
       subtitle: 'Saturday, 12th September 2026',
       src: '/images/wedding-invitation-card.jpg',
-    },
-    {
-      id: 3,
-      title: 'Pencil Sketch Portrait Collage',
-      subtitle: 'Akhil & Josna — Cherished Memories',
-      src: '/images/sketch-portrait-1.jpg',
-    },
-    {
-      id: 4,
-      title: 'Couple Pencil Sketch Artwork',
-      subtitle: 'Together In Love — Wayanad',
-      src: '/images/sketch-portrait-2.jpg',
     },
   ];
 

@@ -58,7 +58,7 @@ export default function Navbar({ onOpenCardModal }) {
         {/* Action Button: View Invitation Cards */}
         <button
           onClick={onOpenCardModal}
-          className="py-2 px-4 rounded-full bg-gradient-to-r from-[#8B263E] to-[#A11F3C] text-white font-cinzel text-xs tracking-wider uppercase shadow-md hover:shadow-lg hover:scale-105 transition-all flex items-center gap-1.5 border border-[#E5C384]/40"
+          className="py-2 px-4 rounded-full bg-gradient-to-r from-[#8B263E] to-[#A11F3C] text-white font-cinzel text-xs tracking-wider uppercase shadow-md hover:shadow-lg hover:scale-105 transition-all flex items-center gap-1.5 border border-[#E5C384]/40 font-bold"
         >
           <Sparkles className="w-3.5 h-3.5 text-[#E5C384]" />
           <span>Official Cards</span>
