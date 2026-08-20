@@ -44,14 +44,9 @@ export default function Hero({ onOpenCardModal }) {
         </p>
 
         {/* Couple Names Header */}
-        <h1 className="font-script text-6xl md:text-8xl lg:text-9xl text-[#8B263E] my-2 drop-shadow-sm leading-none font-bold">
+        <h1 className="font-script text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#8B263E] my-3 drop-shadow-sm leading-tight font-bold mb-4">
           Akhil & Josna
         </h1>
-
-        {/* Full Names */}
-        <p className="font-serif-display text-lg md:text-2xl italic text-[#7E5F28] mb-6">
-          Akhil K Eliyas <span className="text-[#8B263E] font-script text-3xl px-2">&</span> Josna Joshy
-        </p>
 
         {/* Hero Couple Portrait Image (Matching reference site) */}
         <div className="relative max-w-md mx-auto my-6 rounded-3xl overflow-hidden shadow-2xl border-4 border-[#C5A059]/50 group transform hover:scale-[1.01] transition-transform duration-500">

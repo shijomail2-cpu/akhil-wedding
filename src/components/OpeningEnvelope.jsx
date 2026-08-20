@@ -42,10 +42,10 @@ export default function OpeningEnvelope({ onOpen }) {
       {/* Main Compact Envelope Cover Container */}
       <div className="relative max-w-sm md:max-w-md w-full my-auto flex flex-col items-center">
         
-        {/* Envelope Paper Card Structure (No Vertical Ribbon) */}
+        {/* Envelope Paper Card Structure (Compact, No Extra Blank Space) */}
         <div 
           onClick={handleOpen}
-          className="relative w-full bg-[#FDFBF7] rounded-3xl shadow-[0_30px_70px_rgba(0,0,0,0.75)] border-2 border-[#D7BB7B]/60 p-6 text-center overflow-hidden cursor-pointer transform hover:scale-[1.02] transition-all duration-500 group select-none"
+          className="relative w-full bg-[#FDFBF7] rounded-3xl shadow-[0_30px_70px_rgba(0,0,0,0.75)] border-2 border-[#D7BB7B]/60 p-5 text-center overflow-hidden cursor-pointer transform hover:scale-[1.02] transition-all duration-500 group select-none"
         >
           {/* Subtle Embossed Watermark Patterns */}
           <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[radial-gradient(#8B263E_1px,transparent_1px)] [background-size:16px_16px]"></div>
@@ -55,17 +55,17 @@ export default function OpeningEnvelope({ onOpen }) {
           <div className="absolute bottom-3 left-3 opacity-20 text-xl text-[#8B263E]">🤍</div>
           <div className="absolute bottom-3 right-3 opacity-20 text-xl text-[#8B263E]">🤍</div>
 
-          {/* Envelope Top Triangular Flap (Rotates Upwards on Open) */}
+          {/* Envelope Top Triangular Flap */}
           <div 
-            className={`absolute top-0 inset-x-0 h-28 bg-[#F4E7CE]/90 border-b border-[#C5A059]/40 z-30 transition-all duration-700 ease-in-out origin-top shadow-sm ${
+            className={`absolute top-0 inset-x-0 h-24 bg-[#F4E7CE]/90 border-b border-[#C5A059]/40 z-30 transition-all duration-700 ease-in-out origin-top shadow-sm ${
               isOpening ? '-translate-y-24 opacity-0 scale-95' : 'translate-y-0 opacity-100'
             }`}
             style={{ clipPath: 'polygon(0 0, 100% 0, 50% 100%)' }}
           ></div>
 
-          {/* Royal Heart Wax Seal (Breaks and fades out on click) */}
+          {/* Royal Heart Wax Seal */}
           <div 
-            className={`absolute top-16 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ${
+            className={`absolute top-12 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ${
               isOpening ? 'scale-150 opacity-0' : 'scale-100 opacity-100'
             }`}
           >
@@ -74,38 +74,29 @@ export default function OpeningEnvelope({ onOpen }) {
             </div>
           </div>
 
-          {/* Sliding Letter Card Inside (Slides up gracefully out of envelope) */}
+          {/* Sliding Letter Card Inside (Compact Padding & Perfectly Balanced) */}
           <div 
-            className={`relative z-20 pt-3 pb-2 transition-all duration-800 ease-out ${
+            className={`relative z-20 pt-16 pb-2 px-4 flex flex-col items-center justify-center text-center transition-all duration-800 ease-out ${
               isOpening ? '-translate-y-5 scale-105' : 'translate-y-0 scale-100'
             }`}
           >
-            {/* Subtitle */}
+            {/* Subtitle Line 1 */}
             <p className="font-cinzel text-[11px] uppercase tracking-[0.35em] text-[#9A7B38] font-bold mb-1">
               Wedding Invitation Cover
             </p>
 
-            {/* Couple Names */}
+            {/* Couple Names Line 2 */}
             <h1 className="font-script text-4xl md:text-5xl text-[#8B263E] my-1 leading-tight font-bold drop-shadow-sm">
               Akhil & Josna
             </h1>
 
-            {/* Click To Open Indicator with Beating Heart */}
-            <div className="my-3 flex items-center justify-center gap-2 font-cinzel text-[11px] text-[#8B263E] font-bold tracking-widest uppercase bg-[#FAF7F2] py-1.5 px-4 rounded-full border border-[#C5A059]/30 max-w-[210px] mx-auto shadow-sm">
+            {/* Click To Open Indicator Button */}
+            <div className="mt-3 mb-1 flex items-center justify-center gap-2 font-cinzel text-[11px] text-[#8B263E] font-bold tracking-widest uppercase bg-[#FAF7F2] py-2 px-5 rounded-full border border-[#C5A059]/40 max-w-[220px] mx-auto shadow-sm group-hover:scale-105 transition-transform">
               <Sparkles className="w-3.5 h-3.5 text-[#C5A059] animate-spin-slow" />
               <span>{isOpening ? 'Opening Letter...' : 'Click To Open'}</span>
               <span className="animate-heartbeat inline-flex items-center justify-center">
                 <Heart className="w-4 h-4 text-[#8B263E] fill-[#8B263E] drop-shadow-[0_0_8px_rgba(139,38,62,0.6)]" />
               </span>
-            </div>
-
-            {/* Date, Location & Small Quote */}
-            <div className="pt-2 border-t border-[#C5A059]/30 flex flex-col items-center gap-1 font-cinzel text-xs text-[#8B263E] font-bold tracking-wider">
-              <span>12th September 2026</span>
-              <span className="text-[11px] text-[#7E5F28] font-serif italic tracking-normal">Kaniyambetta, Wayanad</span>
-              <p className="text-[10px] text-[#2C2623]/85 font-serif italic mt-1.5 font-normal tracking-normal max-w-[280px] mx-auto leading-relaxed">
-                "Together with our families, we cordially invite you to celebrate our union."
-              </p>
             </div>
           </div>
         </div>
