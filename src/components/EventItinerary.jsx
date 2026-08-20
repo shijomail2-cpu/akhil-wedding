@@ -16,6 +16,7 @@ export default function EventItinerary() {
       contactPerson: 'Nithin Joshy',
       contactPhone: '+91 70511 86617',
       mapUrl: 'https://maps.google.com/?q=St.+Sebastian%27s+Church+Thonichal+Wayanad',
+      receptionMapUrl: 'https://maps.google.com/?q=Casa+Wyna+Thonichal+Wayanad',
     },
     {
       id: 'nuptials',
@@ -136,14 +137,27 @@ export default function EventItinerary() {
                   )}
                 </div>
 
-                <a
-                  href={evt.mapUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-2.5 px-4 rounded-xl bg-[#FAF7F2] hover:bg-[#8B263E] hover:text-white border border-[#C5A059]/30 text-[#8B263E] font-cinzel text-xs uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2 mt-4 shadow-sm"
-                >
-                  <Navigation className="w-3.5 h-3.5" /> Get Directions
-                </a>
+                <div className="flex flex-col gap-2 mt-4">
+                  <a
+                    href={evt.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-2.5 px-4 rounded-xl bg-[#FAF7F2] hover:bg-[#8B263E] hover:text-white border border-[#C5A059]/30 text-[#8B263E] font-cinzel text-xs uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2 shadow-sm"
+                  >
+                    <Church className="w-3.5 h-3.5" /> {evt.receptionVenue ? 'Church Directions' : 'Get Directions'}
+                  </a>
+
+                  {evt.receptionMapUrl && (
+                    <a
+                      href={evt.receptionMapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-2.5 px-4 rounded-xl bg-[#FAF7F2] hover:bg-[#593275] hover:text-white border border-[#593275]/30 text-[#593275] font-cinzel text-xs uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2 shadow-sm"
+                    >
+                      <Navigation className="w-3.5 h-3.5 text-[#E5C384]" /> Reception (Casa Wyna)
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           ))}
